@@ -7,10 +7,12 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-
+import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools'
 import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
+import { FormDevtoolsPanel } from "@tanstack/react-form-devtools";
+import { PacerDevtoolsPanel } from "@tanstack/react-pacer-devtools";
 
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
+
 
 import appCss from '../styles.css?url'
 
@@ -58,17 +60,31 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Header />
           {children}
           <Footer />
+
+          {/* This component breaks the app! To fix you can either:
+          - Comment out the cloudflare plugin in vite.config.ts
+          - Or comment out the TanStackDevtools component below
+          */}
           <TanStackDevtools
             config={{
               position: 'bottom-right',
             }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              TanStackQueryDevtools,
-            ]}
+            plugins={[{
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+            {
+              name: "Tanstack Query",
+              render: <ReactQueryDevtoolsPanel />,
+            },
+            {
+              name: "Tanstack Form",
+              render: <FormDevtoolsPanel />,
+            },
+            {
+              name: "Tanstack Pacer",
+              render: <PacerDevtoolsPanel />,
+            },]}
           />
         </TanStackQueryProvider>
         <Scripts />

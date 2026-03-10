@@ -11,7 +11,10 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 const config = defineConfig({
   plugins: [
     devtools(),
+    
+    //Comment out this plugin to fix the app
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
+
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
     tailwindcss(),
     tanstackStart(),
