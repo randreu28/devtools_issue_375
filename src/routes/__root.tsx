@@ -69,22 +69,22 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             config={{
               position: 'bottom-right',
             }}
-            plugins={[{
+            plugins={[/* {
               name: "Tanstack Router",
               render: <TanStackRouterDevtoolsPanel />,
             },
             {
               name: "Tanstack Query",
               render: <ReactQueryDevtoolsPanel />,
-            },
-            {
-              name: "Tanstack Form",
-              render: <FormDevtoolsPanel />,
-            },
-            {
+            }, */
+              {
+                name: "Tanstack Form",
+                render: <FormDevtoolsPanel />,
+              },
+           /*  {
               name: "Tanstack Pacer",
               render: <PacerDevtoolsPanel />,
-            },]}
+            } */]}
           />
         </TanStackQueryProvider>
         <Scripts />
