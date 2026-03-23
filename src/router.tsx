@@ -6,9 +6,8 @@ import { getContext } from './integrations/tanstack-query/root-provider'
 export function getRouter() {
   const router = createTanStackRouter({
     routeTree,
-
     context: getContext(),
-
+    defaultErrorComponent: () => <div>Oops! Something went wrong.</div>,
     scrollRestoration: true,
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
